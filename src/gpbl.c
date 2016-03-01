@@ -54,7 +54,34 @@ int main(int argc, char **argv) {
 	result = TIMER - cnt;
         mvprintw(timer->y, timer->x, "Time: %3d sec", result);
 	switch(result){
-		case 100: createTree(12, 14, 2);break;
+		case 115:
+		  createTrapeziod(trapeziod, 22, 29, 4);
+		  break;
+		case 110:
+		  createTrapeziod(trapeziod, 22, 29, 7);
+		  createTriangle(triangle, 60, 16, 1);
+		  break;
+	        case 105:
+		  createTriangle(triangle, 60, 16, 7);
+		  createRectangle(rectangle, 97, 20, 5);
+		  break;
+	        case 100:
+		  createRectangle(rectangle, 97, 20, 7);
+		  createParallelogram(parallelogram, 94, 16, 7);
+		  createCircle(circle, 74, 7, 3);
+		  break;
+         	case 95:
+	         createCircle(circle, 74, 7, 7);
+          	 createParallelogram(parallelogram, 122, 30, 6);
+         	 break;
+	        case 90:
+		 createParallelogram(parallelogram, 122, 30, 7);
+		 createSquare(square, 38, 20,2);
+		 break;
+		case 85:
+		 createSquare(square, 38, 20,7);
+		 createTriangle(triangle, 37, 16, 7);
+		 break;
 	}
         refresh();
         cnt++;
