@@ -9,4 +9,5 @@ typedef struct position POSITION;
 
 void setWindow(POSITION *start);
 void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION *trapeziod, POSITION *parallelogram, POSITION *rectangle, POSITION *smalltriangle, POSITION *smallcircle, POSITION *smallsquare, POSITION *smalltrapeziod, POSITION *smallparallelogram, POSITION *smallrectangle );
+void createTree(int x, int y, int z);
 #endif
