@@ -132,16 +132,16 @@ void createParallelogram(POSITION *parallelogram, int x, int y, int z){
     attron(COLOR_PAIR(z));
     mvprintw(parallelogram->y ,parallelogram->x,    "____________");
     mvprintw(parallelogram->y+1 ,parallelogram->x,  "\\###########\\");
-    mvprintw(parallelogram->y+2 ,parallelogram->x,  " \\###########\\");
-    mvprintw(parallelogram->y+3 ,parallelogram->x,  "  \\###########\\");
-    mvprintw(parallelogram->y+4 ,parallelogram->x,  "   \\###########\\");
+    mvprintw(parallelogram->y+2 ,parallelogram->x+1,  "\\###########\\");
+    mvprintw(parallelogram->y+3 ,parallelogram->x+2,  "\\###########\\");
+    mvprintw(parallelogram->y+4 ,parallelogram->x+3,  "\\###########\\");
   attroff(COLOR_PAIR(z));
 }
 void createRectangle(POSITION *rectangle, int x, int y, int z){
     rectangle->x = x;
     rectangle->y = y;
     attron(COLOR_PAIR(z));
-    mvprintw(rectangle->y, rectangle->x+1,    ".__________");
+    mvprintw(rectangle->y, rectangle->x,    ".__________");
     mvprintw(rectangle->y+1, rectangle->x,  "|##########|");
     mvprintw(rectangle->y+2, rectangle->x,  "|##########|");
     mvprintw(rectangle->y+3, rectangle->x,  "|##########|");
@@ -255,7 +255,7 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   
   //Term 2
   //Home5
-  createRectangle(rectangle, 96, 20, 7);
+  createRectangle(rectangle, 97, 20, 7);
   createParallelogram(parallelogram, 94, 16, 7);
   createSquare(square, 91, 20, 7);
   createTriangle(triangle, 90, 16, 7);
@@ -301,6 +301,6 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createSmallRectangle(smallrectangle, 64, 39, 5);
 
   createSmallParallelogram(smallparallelogram, 77, 39, 6);
-  createSmallTriangle(smalltriangle, 90, 40, 7);
+  createSmallTriangle(smalltriangle, 90, 40, 4);
   createSmallCircle(smallcircle, 103, 39, 2);
 }
