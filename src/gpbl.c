@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
     POSITION *smalltrapeziod = (POSITION *)malloc(sizeof(POSITION));
     POSITION *smallparallelogram = (POSITION *)malloc(sizeof(POSITION));
     POSITION *smallrectangle = (POSITION *)malloc(sizeof(POSITION));
-    
+
 
     POSITION *start = (POSITION *)malloc(sizeof(POSITION));
     POSITION *timer = (POSITION *)malloc(sizeof(POSITION));
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
     init_pair(7, COLOR_WHITE, COLOR_BLACK);
     init_pair(8, COLOR_WHITE, COLOR_WHITE);
     init_pair(9, COLOR_BLACK, COLOR_BLACK);
-    
+
     ch = getch();
     setWindow(start);
     initShapes(triangle, circle, square, trapeziod, parallelogram, rectangle, smalltriangle, smallcircle, smallsquare, smalltrapeziod, smallparallelogram, smallrectangle);
@@ -69,8 +69,8 @@ int main(int argc, char **argv) {
     };
     // 0:trap 1:tri 2:rect 3:cir 4:paral 5:squ 6:toptree(term1)
     int timelimit[MAX_OBJECT][3] = {
-        {TIMER-4, TIMER-10, 3}, 
-        {TIMER-10, TIMER-15, 0}, 
+        {TIMER-4, TIMER-10, 3},
+        {TIMER-10, TIMER-15, 0},
         {TIMER-15, TIMER-20, 4},
         {TIMER-20, TIMER-25, 2},
         {TIMER-25, TIMER-30, 5},
@@ -79,6 +79,8 @@ int main(int argc, char **argv) {
     };
     int step = 0;
     int choise = 0;
+
+    system("(sh supermariobros.sh)&");
 
     while (ch != 'q'){
         t_out++;
@@ -109,7 +111,7 @@ int main(int argc, char **argv) {
             attroff(COLOR_PAIR(9));
         }
         else if(ch == KEY_ENTER){
-            if(result < timelimit[step][0] && result > timelimit[step][1] && choise == 0){ 
+            if(result < timelimit[step][0] && result > timelimit[step][1] && choise == 0){
                 score = checkHighScore(score, number, timelimit[step][2]);
                 choise++;
             }
@@ -121,7 +123,8 @@ int main(int argc, char **argv) {
         if(timelimit[step][1] == result){
             step++;
         }
-        
+
+
         //fillinBox(number);
         mvprintw(timer->y, timer->x, "Time: %3d sec.", result);
         mvprintw(highscore->y, highscore->x, "High Score: %2d point.", score);
@@ -174,5 +177,6 @@ int main(int argc, char **argv) {
     }
 
     endwin();
+    system("sudo killall beep");
     return 0;
 }
