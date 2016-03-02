@@ -332,6 +332,7 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createSmallTriangle(smalltriangle, 90, 40, 4);
   createSmallCircle(smallcircle, 103, 39, 2);
 }
+
  int gameover(POSITION *start) {
     start->x = 0;
     start->y = 0;
@@ -435,6 +436,89 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
     attroff(COLOR_PAIR(1));
     refresh();
     usleep(1000*3000);
+/*
+mvprintw(2, 20,  "0000000000000  0000000000000  0000000000000  00000000000    0000000000000            ");
+     mvprintw(2+1, 20,"0000000000000  0000000000000  0000000000000  00000000000    0000000000000            ");
+     mvprintw(2+2, 20,"000            000            000       000  000     000    000            0000000000");
+     mvprintw(2+3, 20,"000            000            000       000  000     000    000            0000000000");
+     mvprintw(2+4, 20,"0000000000000  000            000       000  0000000000     0000000000000            ");
+     mvprintw(2+5, 20,"          000  000            000       000  000     000    000            0000000000");
+     mvprintw(2+6, 20,"          000  000            000       000  000      000   000            0000000000");
+     mvprintw(2+7, 20,"0000000000000  0000000000000  0000000000000  000       000  0000000000000            ");
+     mvprintw(2+8, 20,"0000000000000  0000000000000  0000000000000  000       000  0000000000000            ");
+
+     mvprintw(       ,"     000     "); // number
+     mvprintw(       ,"     000     ");
+     mvprintw(       ,"     000     ");
+     mvprintw(       ,"     000     ");
+     mvprintw(       ,"     000     ");
+     mvprintw(       ,"     000     ");
+     mvprintw(       ,"     000     ");
+     mvprintw(       ,"     000     ");
+     mvprintw(       ,"     000     ");
+    
+
+     mvprintw(       ,"0000000000000");
+     mvprintw(       ,"0000000000000");
+     mvprintw(       ,"          000");
+     mvprintw(       ,"          000");
+     mvprintw(       ,"0000000000000");
+     mvprintw(       ,"000          ");
+     mvprintw(       ,"000          ");
+     mvprintw(       ,"0000000000000");
+     mvprintw(       ,"0000000000000");
+
+     mvprintw(       ,"0000000000000");
+     mvprintw(       ,"0000000000000");
+     mvprintw(       ,"          000");
+     mvprintw(       ,"          000");
+     mvprintw(       ,"0000000000000");
+     mvprintw(       ,"          000");
+     mvprintw(       ,"          000");
+     mvprintw(       ,"0000000000000");
+     mvprintw(       ,"0000000000000");
+
+    mvprintw(        ,"000       000");
+    mvprintw(        ,"000       000");
+    mvprintw(        ,"000       000");
+    mvprintw(        ,"000       000");
+    mvprintw(        ,"0000000000000");
+    mvprintw(        ,"          000");
+    mvprintw(        ,"          000");
+    mvprintw(        ,"          000");
+    mvprintw(        ,"          000");
+
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"000          ");
+    mvprintw(       ,"000          ");
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"          000");
+    mvprintw(       ,"          000");
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"0000000000000");
+
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"000          ");
+    mvprintw(       ,"000          ");
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"000       000");
+    mvprintw(       ,"000       000");
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"0000000000000");
+
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"0000000000000");
+    mvprintw(       ,"          000");
+    mvprintw(       ,"          000");
+    mvprintw(       ,"          000");
+    mvprintw(       ,"          000");
+    mvprintw(       ,"          000");
+    mvprintw(       ,"          000");
+    mvprintw(       ,"          000");
+    
+*/
     return ('q');
 }
  
