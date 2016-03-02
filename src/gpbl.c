@@ -67,16 +67,35 @@ int main(int argc, char **argv) {
         90,
         103
     };
+    // 0:trap 1:tri 2:rect 3:cir 4:paral 5:squ
+    int timelimit[6][3] = {
+        {116, 110, 3}, 
+        {110, 105, 0}, 
+        {105, 100, 4},
+        {100, 95, 2},
+        {95, 90, 5},
+        {90, 85, 1}
+        /*{111, 100, 3}, 
+        {96, 85, 0}, 
+        {81, 70, 4},
+        {66, 55, 2},
+        {51, 40, 5},
+        {36, 25, 1}*/
+    };
+    int step = 0;
+    int choise = 0;
 
     while (ch != 'q'){
         t_out++;
         if (t_out % 1000 == 0) {
             cnt++;
         }
-        
+
+        result = TIMER - cnt;
+
         if (ch == KEY_RIGHT && number < 7) {
             number++;
-            mvprintw(cnt, 2, "RIGHT");
+            //mvprintw(3, 2, "input: %5s", "RIGHT");
             attron(COLOR_PAIR(8));
             mvprintw(43, small_coordinate[number]+1, "***");
             attroff(COLOR_PAIR(8));
@@ -86,7 +105,7 @@ int main(int argc, char **argv) {
         }
         else if (ch == KEY_LEFT && number > 0) {
             number--;
-            mvprintw(cnt, 2, "LEFT");
+            //mvprintw(3, 2, "input: %5s", "LEFT");
             attron(COLOR_PAIR(8));
             mvprintw(43, small_coordinate[number]+1, "***");
             attroff(COLOR_PAIR(8));
@@ -94,14 +113,28 @@ int main(int argc, char **argv) {
             mvprintw(43, small_coordinate[number+1]+1, "   ");
             attroff(COLOR_PAIR(9));
         }
-        else {
-            //mvprintw(cnt, 2, "Key");
+        else if(ch == KEY_ENTER){
+            //mvprintw(3, 2, "input: %5s", "ENTER");
+            //mvprintw(3, 2, "Choise: %3d", number + 1);
+            //mvprintw(4, 2, "Time Start: %3d, Time End: %3d, Answer: %d, value of choise: %d", timelimit[step][0], timelimit[step][1], timelimit[step][2], choise);
+            
+            if(result < timelimit[step][0] && result > timelimit[step][1] && choise == 0){ 
+                score = checkHighScore(score, number, timelimit[step][2]);
+                choise++;
+            }
+        }
+        if(timelimit[step][1] == result && choise == 1){
+            choise--;
+        }
+
+        if(timelimit[step][1] == result){
+            step++;
         }
         
         //fillinBox(number);
-        result = TIMER - cnt;
         mvprintw(timer->y, timer->x, "Time: %3d sec.", result);
         mvprintw(highscore->y, highscore->x, "High Score: %2d point.", score);
+        createBus(t_out);
 
         switch(result){
             case 115:

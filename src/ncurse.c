@@ -312,12 +312,6 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   //Tree
   createTree(101, 29, 7);
   
-  //Road
-  //Bus
-  mvprintw(25, 90, " __________");
-  mvprintw(26, 90, "|_|  __  |_|");
-  mvprintw(27, 90, "|_o_|__|_o_|");
-  
   //Choise
   createSmallTriangle(smalltriangle, 12, 40, 1);
   createSmallSquare(smallsquare, 25, 39, 2);
@@ -344,4 +338,18 @@ void fillinBox(int number){
             break;
         default:break;
     }
+}
+
+// Check High Score
+int checkHighScore(int score, int selecter, int answer){
+  if(selecter == answer){
+    score++;
+  }
+  return score;
+}
+
+void createBus(int t_out){
+  mvprintw(25, 10, " __________");
+  mvprintw(26, 10, "|_|  __  |_|");
+  mvprintw(27, 10, "|_o_|__|_o_|");
 }

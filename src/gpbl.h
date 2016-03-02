@@ -25,4 +25,6 @@ void createSmallParallelogram(POSITION *smallparallelogram, int x, int y, int z)
 void createSmallRectangle(POSITION *smallrectangle, int x, int y, int z);
 void createBox(int x, int y);
 void fillinBox(int number);
+int checkHighScore(int score, int selecter, int answer);
+void createBus(int t_out);
 #endif
