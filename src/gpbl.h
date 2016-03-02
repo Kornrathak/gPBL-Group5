@@ -23,4 +23,6 @@ void createSmallCircle(POSITION *smallcircle, int x, int y, int z);
 void createSmallTrapeziod(POSITION *smalltrapeziod, int x, int y, int z);
 void createSmallParallelogram(POSITION *smallparallelogram, int x, int y, int z);
 void createSmallRectangle(POSITION *smallrectangle, int x, int y, int z);
+void createBox(int x, int y);
+void fillinBox(int number);
 #endif
