@@ -6,12 +6,26 @@
 // Set Window of Game
 void setWindow(POSITION *start){
     start->x = 0;
-    start->y = 5;
-
+    start->y = 0;
     int i, j;
-    for(i = 0; i < 44; i++){
+
+    for(i = 0; i < 6; i++){
         for(j = 0; j < 150; j++){
             if(i == 0){
+                mvprintw(start->y + i, start->x + j, "_");
+            }
+            else if(j == 0 || j == 149){
+                mvprintw(start->y + i, start->x + j, "|");
+            }
+        }
+    }
+
+    start->x = 0;
+    start->y = 5;
+
+    for(i = 0; i < 44; i++){
+        for(j = 0; j < 150; j++){
+            if((i == 0) && (j != 0 && j != 149)){
                 mvprintw(start->y + i, start->x + j, "_");
             }
             else if((i == 33) && (j != 0 && j != 9 && j != 75 && j != 83  && j != 140 && j != 149)){
@@ -65,9 +79,9 @@ void setWindow(POSITION *start){
             else if(i == 31 && j == 144){
                 mvprintw(start->y + i, start->x + j, "D");
             }
-	    else if(i == 8 && (j > 9 && j < 140)){
-		mvprintw(start->y + i, start->x + j, "_");
-	    }
+	          else if(i == 8 && (j > 9 && j < 140)){
+		            mvprintw(start->y + i, start->x + j, "_");
+	          }
             else if((j == 75 || j == 83) && ((i > 8 && i < 20)||(i > 23 && i < 34))){
                 mvprintw(start->y + i, start->x + j, "|");
             }
@@ -149,15 +163,15 @@ void createRectangle(POSITION *rectangle, int x, int y, int z){
 }
 void createTree(int x, int y, int z){
   attron(COLOR_PAIR(z));
-  mvprintw( y++, x,  "   /\\");
-  mvprintw( y++, x,  "  /##\\");
-  mvprintw( y++, x,  " /####\\");
+  mvprintw( y++, x+3,"/\\");
+  mvprintw( y++, x+2,"/##\\");
+  mvprintw( y++, x+1,"/####\\");
   mvprintw( y++, x,  "/######\\");
-  mvprintw( y++, x,  "  /###\\");
-  mvprintw( y++, x,  " /#####\\");
+  mvprintw( y++, x+2,"/###\\");
+  mvprintw( y++, x+1,"/#####\\");
   mvprintw( y++, x,  "/#######\\");
-  mvprintw( y++, x,  "   |#|");
-  mvprintw( y++, x,  "   |#|");
+  mvprintw( y++, x+3,"|#|");
+  mvprintw( y++, x+3,"|#|");
   attroff(COLOR_PAIR(z));
 }
 void createSquareDoor(int x, int y, int z){
