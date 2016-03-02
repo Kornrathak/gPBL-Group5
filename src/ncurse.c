@@ -162,6 +162,14 @@ void createRectangle(POSITION *rectangle, int x, int y, int z){
     mvprintw(rectangle->y+3, rectangle->x,  "|##########|");
   attroff(COLOR_PAIR(z));
 }
+void createTopTree(int x, int y, int z){
+  attron(COLOR_PAIR(z));
+  mvprintw( y++, x+3,"/\\");
+  mvprintw( y++, x+2,"/##\\");
+  mvprintw( y++, x+1,"/####\\");
+  mvprintw( y++, x,  "/######\\");
+  attroff(COLOR_PAIR(z));
+}
 void createTree(int x, int y, int z){
   attron(COLOR_PAIR(z));
   mvprintw( y++, x+3,"/\\");
@@ -324,21 +332,110 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createSmallTriangle(smalltriangle, 90, 40, 4);
   createSmallCircle(smallcircle, 103, 39, 2);
 }
- int gameover(void) {
+ int gameover(POSITION *start) {
+    start->x = 0;
+    start->y = 0;
+    int i, j;
+
+    for(i = 0; i < 6; i++){
+        for(j = 0; j < 150; j++){
+            if(i == 0){
+                mvprintw(start->y + i, start->x + j, "_");
+            }
+            else if(j == 0 || j == 149){
+                mvprintw(start->y + i, start->x + j, "|");
+            }
+        }
+    }
+
+    start->x = 0;
+    start->y = 5;
+
+    for(i = 0; i < 44; i++){
+        for(j = 0; j < 150; j++){
+            if((i == 0) && (j != 0 && j != 149)){
+                mvprintw(start->y + i, start->x + j, "_");
+            }
+            else if((i == 33) && (j != 0 && j != 9 && j != 75 && j != 83  && j != 140 && j != 149)){
+                mvprintw(start->y + i, start->x + j, "_");
+            }
+            else if((i == 43) && (j != 0 && j != 9 && j != 140 && j != 149)){
+                mvprintw(start->y + i, start->x + j, "_");
+            }
+            else if(j == 0  || j == 9 || j == 149 || j == 140){
+                mvprintw(start->y + i, start->x + j, "|");
+            }
+            else if(i == 9 && j == 4){
+                mvprintw(start->y + i, start->x + j, "H");
+            }
+            else if(i == 14 && j == 4){
+                mvprintw(start->y + i, start->x + j, "O");
+            }
+            else if(i == 19 && j == 4){
+                mvprintw(start->y + i, start->x + j, "M");
+            }
+            else if(i == 24 && j == 4){
+                mvprintw(start->y + i, start->x + j, "E");
+            }
+            else if(i == 3 && j == 144){
+                mvprintw(start->y + i, start->x + j, "P");
+            }
+            else if(i == 6 && j == 144){
+                mvprintw(start->y + i, start->x + j, "L");
+            }
+            else if(i == 9 && j == 144){
+                mvprintw(start->y + i, start->x + j, "A");
+            }
+            else if(i == 12 && j == 144){
+                mvprintw(start->y + i, start->x + j, "Y");
+            }
+            else if(i == 16 && j == 144){
+                mvprintw(start->y + i, start->x + j, "G");
+            }
+            else if(i == 19 && j == 144){
+                mvprintw(start->y + i, start->x + j, "R");
+            }
+            else if(i == 22 && j == 144){
+                mvprintw(start->y + i, start->x + j, "O");
+            }
+            else if(i == 25 && j == 144){
+                mvprintw(start->y + i, start->x + j, "U");
+            }
+            else if(i == 28 && j == 144){
+                mvprintw(start->y + i, start->x + j, "N");
+            }
+            else if(i == 31 && j == 144){
+                mvprintw(start->y + i, start->x + j, "D");
+            }
+            else if(i == 8 && (j > 9 && j < 140)){
+                mvprintw(start->y + i, start->x + j, "_");
+            }
+            else if((j == 75 || j == 83) && ((i > 8 && i < 20)||(i > 23 && i < 34))){
+                mvprintw(start->y + i, start->x + j, "|");
+            }
+            else if((i == 19 || i == 23) && ((j > 9 && j < 75)||(j > 83 && j < 140))){
+                mvprintw(start->y + i, start->x + j, "_");
+            }
+            else{
+                mvprintw(start->y + i, start->x + j, " ");
+            }
+        }
+    }
+    
     attron(COLOR_PAIR(1));
-    mvprintw(LINES / 2, COLS/ 2 - 73,     "##############################################################################################################");
-    mvprintw(LINES / 2 + 1, COLS/ 2 - 73, "#    @@@@@@@        @@@      @@       @@    @@@@@@@@@    @@@@@@@@    @          @   @@@@@@@@@@   @@@@@@@     #");
-    mvprintw(LINES / 2 + 2, COLS/ 2 - 73, "#  @         @    @     @    @ @     @ @  @            @          @  @          @  @            @       @    #");
-    mvprintw(LINES / 2 + 3, COLS/ 2 - 73, "#  @             @       @   @  @   @  @  @            @          @   @        @   @            @       @    #");
-    mvprintw(LINES / 2 + 4, COLS/ 2 - 73, "#  @     @@@@@  @         @  @   @ @   @  @ @@@@@@@@@  @          @    @      @    @ @@@@@@@@@  @@@@@@@@     #");
-    mvprintw(LINES / 2 + 5, COLS/ 2 - 73, "#  @         @  @@@@@@@@@@@  @    @    @  @            @          @     @    @     @            @       @    #");
-    mvprintw(LINES / 2 + 6, COLS/ 2 - 73, "#  @         @  @         @  @         @  @            @          @      @  @      @            @        @   #");
-    mvprintw(LINES / 2 + 7, COLS/ 2 - 73, "#    @@@@@@@    @         @  @         @    @@@@@@@@@    @@@@@@@@         @@         @@@@@@@@@  @         @  #");
-    mvprintw(LINES / 2 + 8, COLS/ 2 - 73, "##############################################################################################################");
+    mvprintw(ROW_GAME, 20,     "##############################################################################################################");
+    mvprintw(ROW_GAME+1, 20, "#    @@@@@@@        @@@      @@       @@    @@@@@@@@@    @@@@@@@@    @          @   @@@@@@@@@@   @@@@@@@     #");
+    mvprintw(ROW_GAME+2, 20, "#  @         @    @     @    @ @     @ @  @            @          @  @          @  @            @       @    #");
+    mvprintw(ROW_GAME+3, 20, "#  @             @       @   @  @   @  @  @            @          @   @        @   @            @       @    #");
+    mvprintw(ROW_GAME+4, 20, "#  @     @@@@@  @         @  @   @ @   @  @ @@@@@@@@@  @          @    @      @    @ @@@@@@@@@  @@@@@@@@     #");
+    mvprintw(ROW_GAME+5, 20, "#  @         @  @@@@@@@@@@@  @    @    @  @            @          @     @    @     @            @       @    #");
+    mvprintw(ROW_GAME+6, 20, "#  @         @  @         @  @         @  @            @          @      @  @      @            @        @   #");
+    mvprintw(ROW_GAME+7, 20, "#    @@@@@@@    @         @  @         @    @@@@@@@@@    @@@@@@@@         @@         @@@@@@@@@  @         @  #");
+    mvprintw(ROW_GAME+8, 20, "##############################################################################################################");
     attroff(COLOR_PAIR(1));
     refresh();
-    sleep(10);
-    return'q';
+    usleep(1000*3000);
+    return ('q');
 }
  
 
@@ -367,14 +464,7 @@ int checkHighScore(int score, int selecter, int answer){
 }
 
 void createBus(int t_out, int stop){
-  if(t_out/1000 <= 120 - stop){
-    mvprintw(3, 2, "value of t_out/1000: %3d , value of t_out: %6d", t_out/1000, t_out);
-    mvprintw(4, 2, "value of time: %3d", t_out/(118/(TIMER-stop)));
-    // 80 => 40999 , 20499 => 40
-    // 85 => 35999 , 11999 => 35 = 3
-    // 90 => 30999 , 10999 => 30 = 3
-  }
-  int i = 10 + (t_out/(118/(TIMER-stop)))/100; //(118*100/(TIMER-stop));
+  int i = 10 + (t_out/(118/(TIMER-(stop+15))))/100; //(118*100/(TIMER-stop));
   if(i < 129){
     if(i == 10){
       mvprintw(25, i, " __________");

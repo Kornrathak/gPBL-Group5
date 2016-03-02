@@ -1,6 +1,8 @@
 #ifndef GPBL_H_
 #define GPBL_H_
-#define TIMER 120 // Time limit: 2 minutes
+#define TIMER 45 // Time limit: 2 minutes
+#define ROW_GAME 19
+#define MAX_OBJECT 7
 
 struct position{
   int x, y;
@@ -27,4 +29,6 @@ void createBox(int x, int y);
 void fillinBox(int number);
 int checkHighScore(int score, int selecter, int answer);
 void createBus(int t_out, int stop);
+int gameover(POSITION *start);
+void createTopTree(int x, int y, int z);
 #endif
