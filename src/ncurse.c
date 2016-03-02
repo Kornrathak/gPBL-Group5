@@ -189,14 +189,16 @@ void createSmallSquare(POSITION *smallsquare, int x, int y, int z){
     mvprintw(smallsquare->y+1, smallsquare->x,"|###|");
     mvprintw(smallsquare->y+2, smallsquare->x,"|###|");
   attroff(COLOR_PAIR(z));
+  createBox(smallsquare->x, smallsquare->y+4);
 }
 void createSmallTriangle(POSITION *smalltriangle, int x, int y, int z){
     smalltriangle->x =x;
     smalltriangle->y =y;
     attron(COLOR_PAIR(z));
     mvprintw(smalltriangle->y, smalltriangle->x+1,  "/\\");
-    mvprintw(smalltriangle->y+1, smalltriangle->x,"/##\\"); 
-    attroff(COLOR_PAIR(z));   
+    mvprintw(smalltriangle->y+1, smalltriangle->x,"/##\\");
+    attroff(COLOR_PAIR(z));
+    createBox(smalltriangle->x, smalltriangle->y+3);
 }
 void createSmallCircle(POSITION *smallcircle, int x, int y, int z){
     smallcircle->x = x;
@@ -206,6 +208,7 @@ attron(COLOR_PAIR(z));
     mvprintw(smallcircle->y+1, smallcircle->x,  ".\"#\".");
     mvprintw(smallcircle->y+2, smallcircle->x+1,  "\"-\"");
   attroff(COLOR_PAIR(z));
+    createBox(smallcircle->x, smallcircle->y+4);
 }
 void createSmallTrapeziod(POSITION *smalltrapeziod, int x, int y, int z){
     smalltrapeziod->x = x;
@@ -215,6 +218,7 @@ attron(COLOR_PAIR(z));
     mvprintw(smalltrapeziod->y+1, smalltrapeziod->x+1,  "/###\\");
     mvprintw(smalltrapeziod->y+2, smalltrapeziod->x,  "/#####\\");
   attroff(COLOR_PAIR(z));
+    createBox(smalltrapeziod->x, smalltrapeziod->y+4);
 }
 void createSmallParallelogram(POSITION *smallparallelogram, int x, int y, int z){
     smallparallelogram->x = x;
@@ -222,8 +226,9 @@ void createSmallParallelogram(POSITION *smallparallelogram, int x, int y, int z)
 attron(COLOR_PAIR(z));
     mvprintw(smallparallelogram->y, smallparallelogram->x,    "_____" );
     mvprintw(smallparallelogram->y+1, smallparallelogram->x,  "\\####\\" );
-    mvprintw(smallparallelogram->y+2, smallparallelogram->x+1,  "\\####\\" );  
+    mvprintw(smallparallelogram->y+2, smallparallelogram->x+1,  "\\####\\" );
     attroff(COLOR_PAIR(z));
+    createBox(smallparallelogram->x, smallparallelogram->y+4);
 }
 void createSmallRectangle(POSITION *smallrectangle, int x, int y, int z){
     smallrectangle->x = x;
@@ -233,6 +238,7 @@ void createSmallRectangle(POSITION *smallrectangle, int x, int y, int z){
     mvprintw(smallrectangle->y+1, smallrectangle->x,    "|#####|" );
     mvprintw(smallrectangle->y+2, smallrectangle->x,    "|#####|" );
     attroff(COLOR_PAIR(z));
+    createBox(smallrectangle->x, smallrectangle->y+4);
 }
 void createBusStop(int x, int y, int z){
   attron(COLOR_PAIR(z));
@@ -244,6 +250,11 @@ void createBusStop(int x, int y, int z){
   mvprintw(y++, x, "  |      |");
   attroff(COLOR_PAIR(z));
 }
+
+void createBox(int x, int y){
+    mvprintw(y, x, "[   ]");
+}
+
 // Initialize Shapes
 void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION *trapeziod, POSITION *parallelogram, POSITION *rectangle, POSITION *smalltriangle, POSITION *smallcircle, POSITION *smallsquare, POSITION *smalltrapeziod, POSITION *smallparallelogram, POSITION *smallrectangle){
 //1[red] 2[green] 3[yellow] 4[blue] 5[magenta] 6[cyan] 7[white]
@@ -317,4 +328,20 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createSmallParallelogram(smallparallelogram, 77, 39, 6);
   createSmallTriangle(smalltriangle, 90, 40, 4);
   createSmallCircle(smallcircle, 103, 39, 2);
+}
+
+void fillinBox(int number){
+    attron(COLOR_PAIR(8));
+    switch (number) {
+        case 0:
+            mvprintw(44, 13, "   ");
+            break;
+        case 1:
+            mvprintw(42, 26, "   ");
+            break;
+        case 2:
+            mvprintw(42, 39, "   ");
+            break;
+        default:break;
+    }
 }
