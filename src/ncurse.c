@@ -366,8 +366,25 @@ int checkHighScore(int score, int selecter, int answer){
   return score;
 }
 
-void createBus(int t_out){
-  mvprintw(25, 10, " __________");
-  mvprintw(26, 10, "|_|  __  |_|");
-  mvprintw(27, 10, "|_o_|__|_o_|");
+void createBus(int t_out, int stop){
+  if(t_out/1000 <= 120 - stop){
+    mvprintw(3, 2, "value of t_out/1000: %3d , value of t_out: %6d", t_out/1000, t_out);
+    mvprintw(4, 2, "value of time: %3d", t_out/(118/(TIMER-stop)));
+    // 80 => 40999 , 20499 => 40
+    // 85 => 35999 , 11999 => 35 = 3
+    // 90 => 30999 , 10999 => 30 = 3
+  }
+  int i = 10 + (t_out/(118/(TIMER-stop)))/100; //(118*100/(TIMER-stop));
+  if(i < 129){
+    if(i == 10){
+      mvprintw(25, i, " __________");
+      mvprintw(26, i, "|_|  __  |_|");
+      mvprintw(27, i, "|_o_|__|_o_|");
+    }
+    else{
+      mvprintw(25, i-1, "  __________");
+      mvprintw(26, i-1, " |_|  __  |_|");
+      mvprintw(27, i-1, " |_o_|__|_o_|");
+    }
+  }
 }

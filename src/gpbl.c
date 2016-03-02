@@ -134,7 +134,7 @@ int main(int argc, char **argv) {
         //fillinBox(number);
         mvprintw(timer->y, timer->x, "Time: %3d sec.", result);
         mvprintw(highscore->y, highscore->x, "High Score: %2d point.", score);
-        createBus(t_out);
+        createBus(t_out, timelimit[5][1]);
 
         switch(result){
             case 115:
