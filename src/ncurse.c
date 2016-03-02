@@ -175,14 +175,20 @@ void createSmallSquare(POSITION *smallsquare, int x, int y, int z){
     mvprintw(smallsquare->y+1, smallsquare->x,"|###|");
     mvprintw(smallsquare->y+2, smallsquare->x,"|###|");
   attroff(COLOR_PAIR(z));
+
+    // button
+    mvprintw(smallsquare->y+4, smallsquare->x, "[   ]");
 }
 void createSmallTriangle(POSITION *smalltriangle, int x, int y, int z){
     smalltriangle->x =x;
     smalltriangle->y =y;
     attron(COLOR_PAIR(z));
     mvprintw(smalltriangle->y, smalltriangle->x+1,  "/\\");
-    mvprintw(smalltriangle->y+1, smalltriangle->x,"/##\\"); 
-    attroff(COLOR_PAIR(z));   
+    mvprintw(smalltriangle->y+1, smalltriangle->x,"/##\\");
+    attroff(COLOR_PAIR(z));
+
+    // button
+    mvprintw(smalltriangle->y+3, smalltriangle->x, "[   ]");
 }
 void createSmallCircle(POSITION *smallcircle, int x, int y, int z){
     smallcircle->x = x;
@@ -191,7 +197,10 @@ attron(COLOR_PAIR(z));
     mvprintw(smallcircle->y, smallcircle->x+2,    "_");
     mvprintw(smallcircle->y+1, smallcircle->x,  ".\"#\".");
     mvprintw(smallcircle->y+2, smallcircle->x+1,  "\"-\"");
-  attroff(COLOR_PAIR(z));
+    attroff(COLOR_PAIR(z));
+
+    // button
+    mvprintw(smallcircle->y+4, smallcircle->x, "[   ]");
 }
 void createSmallTrapeziod(POSITION *smalltrapeziod, int x, int y, int z){
     smalltrapeziod->x = x;
@@ -201,6 +210,9 @@ attron(COLOR_PAIR(z));
     mvprintw(smalltrapeziod->y+1, smalltrapeziod->x+1,  "/###\\");
     mvprintw(smalltrapeziod->y+2, smalltrapeziod->x,  "/#####\\");
   attroff(COLOR_PAIR(z));
+
+    // button
+    mvprintw(smalltrapeziod->y+4, smalltrapeziod->x, "[   ]");
 }
 void createSmallParallelogram(POSITION *smallparallelogram, int x, int y, int z){
     smallparallelogram->x = x;
@@ -208,8 +220,11 @@ void createSmallParallelogram(POSITION *smallparallelogram, int x, int y, int z)
 attron(COLOR_PAIR(z));
     mvprintw(smallparallelogram->y, smallparallelogram->x,    "_____" );
     mvprintw(smallparallelogram->y+1, smallparallelogram->x,  "\\####\\" );
-    mvprintw(smallparallelogram->y+2, smallparallelogram->x+1,  "\\####\\" );  
+    mvprintw(smallparallelogram->y+2, smallparallelogram->x+1,  "\\####\\" );
     attroff(COLOR_PAIR(z));
+
+    // button
+    mvprintw(smallparallelogram->y+4, smallparallelogram->x+1, "[   ]");
 }
 void createSmallRectangle(POSITION *smallrectangle, int x, int y, int z){
     smallrectangle->x = x;
@@ -219,6 +234,9 @@ void createSmallRectangle(POSITION *smallrectangle, int x, int y, int z){
     mvprintw(smallrectangle->y+1, smallrectangle->x,    "|#####|" );
     mvprintw(smallrectangle->y+2, smallrectangle->x,    "|#####|" );
     attroff(COLOR_PAIR(z));
+
+    // button
+    mvprintw(smallrectangle->y+4, smallrectangle->x+1, "[   ]");
 }
 void createBusStop(int x, int y, int z){
   attron(COLOR_PAIR(z));
@@ -235,7 +253,7 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
 //1[red] 2[green] 3[yellow] 4[blue] 5[magenta] 6[cyan] 7[white]
   //Sun
   createCircle(circle, 74, 7, 7);
-  
+
   //Term 1
   //Home
   createSquare(square, 23, 20, 7);
@@ -252,7 +270,7 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   //Tree
   createTree(12, 14, 7);
   createTree(48, 14, 7);
-  
+
   //Term 2
   //Home5
   createRectangle(rectangle, 97, 20, 7);
@@ -269,7 +287,7 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createRectangle(rectangle, 24, 32, 7);
   createTrapeziod(trapeziod, 22, 29, 7);
   createSquareDoor(26, 33, 7);
-  //Tree 
+  //Tree
   createTree(44, 29, 7);
   createBusStop(58, 29, 7);
 
@@ -286,13 +304,13 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createSquareDoor(121, 35, 7);
   //Tree
   createTree(101, 29, 7);
-  
+
   //Road
   //Bus
   mvprintw(25, 90, " __________");
   mvprintw(26, 90, "|_|  __  |_|");
   mvprintw(27, 90, "|_o_|__|_o_|");
-  
+
   //Choise
   createSmallTriangle(smalltriangle, 12, 40, 1);
   createSmallSquare(smallsquare, 25, 39, 2);
@@ -303,4 +321,8 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createSmallParallelogram(smallparallelogram, 77, 39, 6);
   createSmallTriangle(smalltriangle, 90, 40, 4);
   createSmallCircle(smallcircle, 103, 39, 2);
+}
+
+void setButton(int x, int y){
+
 }
