@@ -54,6 +54,10 @@ int main(int argc, char **argv) {
     setStartDisplay();
     attroff(COLOR_PAIR(7));
     while(ch != KEY_ENTER){
+        if(ch == 'q'){
+            endwin();
+            return 0;
+        }
         ch = getch();
     }
     attron(COLOR_PAIR(9));
@@ -129,7 +133,7 @@ int main(int argc, char **argv) {
             }
         }
         else if(ch != KEY_ENTER && timelimit[step][1] == result && choise != 1){
-            score = checkHighScore(score, number, timelimit[step][2], temp++);
+            score = checkHighScore(score, 99, timelimit[step][2], temp++);
         }
         if(timelimit[step][1] == result && choise == 1){
             choise--;

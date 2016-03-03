@@ -330,6 +330,7 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
 }
 
 int gameover(POSITION *start, int score) {
+    //clear();
     start->x = 0;
     start->y = 0;
 
