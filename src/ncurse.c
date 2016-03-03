@@ -89,11 +89,6 @@ void setWindow(POSITION *start){
             else if((i == 19 || i == 23) && ((j > 9 && j < 75)||(j > 83 && j < 140))){
                 mvprintw(start->y + i, start->x + j, "_");
             }
-            /*
-            else{
-                mvprintw(start->y + i, start->x + j, " ");
-            }
-            */
         }
     }
 }
@@ -332,6 +327,7 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createSmallTriangle(smalltriangle, 90, 40, 4);
   createSmallCircle(smallcircle, 103, 39, 2);
 }
+
 int gameover(POSITION *start, int score) {
     start->x = 0;
     start->y = 0;
@@ -444,18 +440,19 @@ int gameover(POSITION *start, int score) {
 
     attron(COLOR_PAIR(1));
     mvprintw(ROW_GAME, 24,  "0000000000000  0000000000000  0000000000000  00000000000    0000000000000");
-    mvprintw(ROW_GAME+1, 24,"0000000000000  0000000000000  0000000000000  00000000000    0000000000000");
-    mvprintw(ROW_GAME+2, 24,"000            000            000       000  000     000    000            0000000000");
-    mvprintw(ROW_GAME+3, 24,"000            000            000       000  000     000    000            0000000000");
+    mvprintw(ROW_GAME+1, 24,"0000000000000  0000000000000  0000000000000  00000000000    0000000000000  000  ");
+    mvprintw(ROW_GAME+2, 24,"000            000            000       000  000     000    000            000  ");
+    mvprintw(ROW_GAME+3, 24,"000            000            000       000  000     000    000");
     mvprintw(ROW_GAME+4, 24,"0000000000000  000            000       000  0000000000     0000000000000");
-    mvprintw(ROW_GAME+5, 24,"          000  000            000       000  000     000    000            0000000000");
-    mvprintw(ROW_GAME+6, 24,"          000  000            000       000  000      000   000            0000000000");
-    mvprintw(ROW_GAME+7, 24,"0000000000000  0000000000000  0000000000000  000       000  0000000000000");
+    mvprintw(ROW_GAME+5, 24,"          000  000            000       000  000     000    000");
+    mvprintw(ROW_GAME+6, 24,"          000  000            000       000  000      000   000            000  ");
+    mvprintw(ROW_GAME+7, 24,"0000000000000  0000000000000  0000000000000  000       000  0000000000000  000  ");
     mvprintw(ROW_GAME+8, 24,"0000000000000  0000000000000  0000000000000  000       000  0000000000000");
     attroff(COLOR_PAIR(1));
 
     attron(COLOR_PAIR(3));
     switch (score) { // number.c
+        case 0: setZero(); break;
         case 1: setOne(); break;
         case 2: setTwo(); break;
         case 3: setThree(); break;
@@ -469,80 +466,6 @@ int gameover(POSITION *start, int score) {
 
     refresh();
     usleep(1000*3000);
-
-    /*
-
-
-    mvprintw(       ,"     000     "); // number
-    mvprintw(       ,"     000     ");
-    mvprintw(       ,"     000     ");
-    mvprintw(       ,"     000     ");
-    mvprintw(       ,"     000     ");
-    mvprintw(       ,"     000     ");
-    mvprintw(       ,"     000     ");
-    mvprintw(       ,"     000     ");
-    mvprintw(       ,"     000     ");
-
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"000          ");
-    mvprintw(       ,"000          ");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-
-    mvprintw(        ,"000       000");
-    mvprintw(        ,"000       000");
-    mvprintw(        ,"000       000");
-    mvprintw(        ,"000       000");
-    mvprintw(        ,"0000000000000");
-    mvprintw(        ,"          000");
-    mvprintw(        ,"          000");
-    mvprintw(        ,"          000");
-    mvprintw(        ,"          000");
-
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"000          ");
-    mvprintw(       ,"000          ");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"000          ");
-    mvprintw(       ,"000          ");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"000       000");
-    mvprintw(       ,"000       000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"0000000000000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    mvprintw(       ,"          000");
-    */
 
     return('q');
 }
