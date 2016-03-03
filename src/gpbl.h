@@ -2,7 +2,7 @@
 #define GPBL_H_
 #define TIMER 45 // Time limit: 2 minutes
 #define ROW_GAME 19
-#define MAX_OBJECT 7
+#define MAX_OBJECT 9
 #define POINT_SHOW_X 30
 #define POINT_SHOW_Y 1
 

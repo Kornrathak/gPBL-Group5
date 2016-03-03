@@ -326,6 +326,7 @@ void initShapes(POSITION *triangle, POSITION *circle, POSITION *square, POSITION
   createSmallParallelogram(smallparallelogram, 77, 39, 6);
   createSmallTriangle(smalltriangle, 90, 40, 4);
   createSmallCircle(smallcircle, 103, 39, 2);
+  createSmallRectangle(smallrectangle, 116, 39, 2);
 }
 
 int gameover(POSITION *start, int score) {
