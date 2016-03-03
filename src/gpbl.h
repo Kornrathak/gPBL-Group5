@@ -3,6 +3,8 @@
 #define TIMER 45 // Time limit: 2 minutes
 #define ROW_GAME 19
 #define MAX_OBJECT 7
+#define POINT_SHOW_X 30
+#define POINT_SHOW_Y 1
 
 struct position{
   int x, y;
@@ -27,10 +29,10 @@ void createSmallParallelogram(POSITION *smallparallelogram, int x, int y, int z)
 void createSmallRectangle(POSITION *smallrectangle, int x, int y, int z);
 void createBox(int x, int y);
 void fillinBox(int number);
-int checkHighScore(int score, int selecter, int answer);
+int checkHighScore(int score, int selecter, int answer, int count);
 void createBus(int t_out, int stop);
 int gameover(POSITION *start, int score);
 void createTopTree(int x, int y, int z);
 void setZero(void); void setOne(void); void setTwo(void); void setThree(void); void setFour(void); void setFive(void); void setSix(void); void setSeven(void);
-void setStartDisplay(void);
+void setStartDisplay();
 #endif

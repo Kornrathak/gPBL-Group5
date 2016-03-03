@@ -486,13 +486,37 @@ void fillinBox(int number){
         default:break;
     }
 }
+void setCorrect(int select){
+    attron(COLOR_PAIR(2));
+    mvprintw(POINT_SHOW_Y+0, POINT_SHOW_X+select, "       .*");
+    mvprintw(POINT_SHOW_Y+1, POINT_SHOW_X+select, "     .*");
+    mvprintw(POINT_SHOW_Y+2, POINT_SHOW_X+select, "*. .*");
+    mvprintw(POINT_SHOW_Y+3, POINT_SHOW_X+select, "  *");
+    attroff(COLOR_PAIR(2));
+}
+
+void setWrong(int select){
+    attron(COLOR_PAIR(1));
+    mvprintw(POINT_SHOW_Y+0, POINT_SHOW_X+select, "**    **");
+    mvprintw(POINT_SHOW_Y+1, POINT_SHOW_X+select, "  *..*");
+    mvprintw(POINT_SHOW_Y+2, POINT_SHOW_X+select, "  *''*");
+    mvprintw(POINT_SHOW_Y+3, POINT_SHOW_X+select, "**    **");
+    attroff(COLOR_PAIR(1));
+}
 
 // Check High Score
-int checkHighScore(int score, int selecter, int answer){
+int checkHighScore(int score, int selecter, int answer, int count){
     if(selecter == answer){
         score++;
+        setCorrect(count*10);
+        system("C6=1046.5;E6=1318.51;beep -f $E6 -l 70 -D 50 -n -f $C6 -l 70 -D 50 -n -f $E6 -l 70 -D 50 -n -f $C6 -l 70"); //correct sound
+        return score;
     }
-    return score;
+    else {
+        setWrong(count*10);
+        system("C3=400.81;beep -f $C3 -l 70 -D 50 -n -f $C3 -l 70");
+        return score;
+    }
 }
 
 void createBus(int t_out, int stop){
