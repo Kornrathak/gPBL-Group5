@@ -178,10 +178,9 @@ int main(int argc, char **argv) {
 
         ch = getch();
     }
-    
+    }
 
     endwin();
-}
     //system("sudo killall beep");
     return 0;
 }
