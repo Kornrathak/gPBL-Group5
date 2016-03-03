@@ -66,18 +66,19 @@ int main(int argc, char **argv) {
     int score = 0;  // High Score
     int t_out = 0;
     int number = 0;
-    int small_coordinate[8] = {
-        12,
-        25,
-        38,
-        51,
-        64,
-        77,
-        90,
-        103
+    int small_coordinate[MAX_OBJECT] = {
+        12,//0
+        25,//1
+        38,//2
+        51,//3
+        64,//4
+        77,//5
+        90,//6
+        103,//7
+        116
     };
     // 0:trap 1:tri 2:rect 3:cir 4:paral 5:squ 6:toptree(term1)
-    int timelimit[MAX_OBJECT][3] = {
+    int timelimit[7][3] = {
         {TIMER-4, TIMER-10, 3},
         {TIMER-10, TIMER-15, 0},
         {TIMER-15, TIMER-20, 4},
@@ -101,7 +102,7 @@ int main(int argc, char **argv) {
 
         result = TIMER - cnt;
         //mvprintw(4, 2, "Time Start: %3d, Time End: %3d, Answer: %d, value of choise: %d", timelimit[step][0], timelimit[step][1], timelimit[step][2], choise);
-        if (ch == KEY_RIGHT && number < 7) {
+        if (ch == KEY_RIGHT && number < 8) {
             number++;
             //mvprintw(3, 2, "input: %5s", "RIGHT");
             attron(COLOR_PAIR(8));
@@ -127,6 +128,9 @@ int main(int argc, char **argv) {
                 choise++;
             }
         }
+        else if(ch != KEY_ENTER && timelimit[step][1] == result && choise != 1){
+            score = checkHighScore(score, number, timelimit[step][2], temp++);
+        }
         if(timelimit[step][1] == result && choise == 1){
             choise--;
         }
@@ -141,7 +145,7 @@ int main(int argc, char **argv) {
         mvprintw(highscore->y, highscore->x, "High Score: %2d point.", score);
         createBus(t_out, timelimit[MAX_OBJECT-1][1]);
 
-        switch(result){ // TIMER = 45 
+        switch(result){ // TIMER = 45
             case TIMER-5:
                 createTrapeziod(trapeziod, 22, 29, 4);
                 break;
@@ -186,7 +190,7 @@ int main(int argc, char **argv) {
 
         ch = getch();
     }
-    
+
 
     endwin();
     system("sudo killall beep");
