@@ -50,11 +50,17 @@ int main(int argc, char **argv) {
     init_pair(9, COLOR_BLACK, COLOR_BLACK);
 
     ch = getch();
-
+    attron(COLOR_PAIR(7));
+    setStartDisplay();
+    attroff(COLOR_PAIR(7));
+    while(ch != KEY_ENTER){
+        ch = getch();
+    }
+    attron(COLOR_PAIR(9));
+    setStartDisplay();
+    attroff(COLOR_PAIR(9));
     setWindow(start);
     initShapes(triangle, circle, square, trapeziod, parallelogram, rectangle, smalltriangle, smallcircle, smallsquare, smalltrapeziod, smallparallelogram, smallrectangle);
-
-    if(ch == KEY_ENTER){
 
     int result;     // result = TIMER-cnt
     int score = 0;  // High Score
@@ -82,8 +88,10 @@ int main(int argc, char **argv) {
     };
     int step = 0;
     int choise = 0;
+    int temp = 0;
 
-    //system("(sh supermariobros.sh)&");
+    system("sh ./config-sound.sh"); // Configure Package "beep"
+    system("(sh supermariobros.sh)&"); // Play a BGM
 
     while (ch != 'q'){
         t_out++;
@@ -115,7 +123,7 @@ int main(int argc, char **argv) {
         }
         else if(ch == KEY_ENTER || ch == KEY_DOWN){
             if(result < timelimit[step][0] && result > timelimit[step][1] && choise == 0){
-                score = checkHighScore(score, number, timelimit[step][2]);
+                score = checkHighScore(score, number, timelimit[step][2], temp++);
                 choise++;
             }
         }
@@ -181,7 +189,6 @@ int main(int argc, char **argv) {
     
 
     endwin();
-}
-    //system("sudo killall beep");
+    system("sudo killall beep");
     return 0;
 }
