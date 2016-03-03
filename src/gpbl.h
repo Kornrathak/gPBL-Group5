@@ -31,5 +31,5 @@ int checkHighScore(int score, int selecter, int answer);
 void createBus(int t_out, int stop);
 int gameover(POSITION *start, int score);
 void createTopTree(int x, int y, int z);
-void setOne(void); void setTwo(void); void setThree(void); void setFour(void); void setFive(void); void setSix(void); void setSeven(void);
+void setZero(void); void setOne(void); void setTwo(void); void setThree(void); void setFour(void); void setFive(void); void setSix(void); void setSeven(void);
 #endif

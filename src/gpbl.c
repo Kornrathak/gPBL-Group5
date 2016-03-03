@@ -130,7 +130,7 @@ int main(int argc, char **argv) {
         mvprintw(highscore->y, highscore->x, "High Score: %2d point.", score);
         createBus(t_out, timelimit[MAX_OBJECT-1][1]);
 
-        switch(result){
+        switch(result){ // TIMER = 45 
             case TIMER-5:
                 createTrapeziod(trapeziod, 22, 29, 4);
                 break;
