@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
     int step = 0;
     int choise = 0;
 
-    system("(sh supermariobros.sh)&");
+    //system("(sh supermariobros.sh)&");
 
     while (ch != 'q'){
         t_out++;
@@ -110,7 +110,7 @@ int main(int argc, char **argv) {
             mvprintw(43, small_coordinate[number+1]+1, "   ");
             attroff(COLOR_PAIR(9));
         }
-        else if(ch == KEY_ENTER){
+        else if(ch == KEY_ENTER || ch == KEY_DOWN){
             if(result < timelimit[step][0] && result > timelimit[step][1] && choise == 0){
                 score = checkHighScore(score, number, timelimit[step][2]);
                 choise++;
@@ -169,7 +169,7 @@ int main(int argc, char **argv) {
         refresh();
 
         if(result == 0) {
-            gameover(start);
+            gameover(start, score);
             break;
         }
 
@@ -177,6 +177,6 @@ int main(int argc, char **argv) {
     }
 
     endwin();
-    system("sudo killall beep");
+    //system("sudo killall beep");
     return 0;
 }
